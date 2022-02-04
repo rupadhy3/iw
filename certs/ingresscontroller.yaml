@@ -1,0 +1,23 @@
+apiVersion: operator.openshift.io/v1
+kind: IngressController
+metadata:
+  labels:
+    app.kubernetes.io/component: router
+    app.kubernetes.io/instance: ingresscontroller
+    app.kubernetes.io/name: haproxy
+    app.kubernetes.io/part-of: ingress-appgateway
+    manager: ingress-operator
+  name: ingress-appgateway
+  namespace: openshift-ingress-operator
+  defaultCertificate:
+    name: 
+  domain: 
+  endpointPublishingStrategy:
+    loadBalancer:
+      scope: Internal
+    type: LoadBalancerService
+  routeAdmission:
+    namespaceOwnership: InterNamespaceAllowed
+  routeSelector:
+    matchLabels:
+      router: ingress-appgateway
